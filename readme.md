@@ -14,4 +14,5 @@
 
 ## Steps to work on the project
 *a.Download the project details and files from the link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip*
+
 *b.Create a script which is called run_analysis.R to read/load files to R. Script also average out each variable for each activity and each subject and create a table for it.*
