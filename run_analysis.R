@@ -6,6 +6,9 @@
 ## 4.Appropriately labels the data set with descriptive variable names.
 ## 5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+## Getting the function of dcast from reshape2
+library(reshape2)
+
 ## Read the data from activity labels and featres from the tables (Column #2)
 activityLabels<-read.table("./github/UCI HAR Dataset/activity_labels.txt")
 activityLabels<-activityLabels[,2]
@@ -20,7 +23,6 @@ testSubject<-read.table("./github/UCI HAR Dataset/test/subject_test.txt")
 trainResult<-read.table("./github/UCI HAR Dataset/train/X_train.txt")
 trainActivity<-read.table("./github/UCI HAR Dataset/train/y_train.txt")
 trainSubject<-read.table("./github/UCI HAR Dataset/train/subject_train.txt")
-
 
 ##Assign names to testResult Group from the feature table
 names(testResult)<-feature
@@ -37,9 +39,9 @@ names(trainSubject)<-"subject"
 names(trainActivity)<-c("activity.ID","activity.Names")
 
 ## Form/Combine the data set in one form
-testData<-cbind(testSubject,testActivity,testResult)
-trainData<-cbind(trainSubject,trainActivity,trainResult)
-combineData<-rbind(testData,trainData)
+testData<-cbind(testSubject,testActivity,testResult) ##Combine test data
+trainData<-cbind(trainSubject,trainActivity,trainResult) ##Combine train data
+combineData<-rbind(testData,trainData) ##Combine test and train data
 
 # Step 2.Extracts only the measurements on the mean and standard deviation for each measurement. 
 extractCombineData<-combineData[,grepl("subject|activity.ID|activity.Names|mean|std",names(combineData))]
