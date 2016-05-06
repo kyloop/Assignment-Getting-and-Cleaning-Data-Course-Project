@@ -51,4 +51,4 @@ meltData<-melt(extractCombineData,id.vars=mainLabels,measure.var=data_labels) ##
 tidyData<-dcast(meltData, subject + activity.Names ~ variable , mean) ## Taking the mean for each columns variables
 
 # Create the table for the tidyData
-write.table(tidyData,"./github/UCI HAR Dataset/tidyData.txt")
+write.table(tidyData,"./github/UCI HAR Dataset/tidyData.csv",row.names = FALSE)
